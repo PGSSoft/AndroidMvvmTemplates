@@ -1,0 +1,39 @@
+<template format="4"
+		revision="1"
+		name="MVVM View"
+		description="Creates MVVM view">
+ 
+	<category value="Other"/>
+ 
+	<parameter id="viewName"
+		name="View Name"
+		type="string"
+		constraints="class|unique|nonempty"
+		default="New"
+		help="Name of the new view, excluding the word &quot;View&quot;"/>
+ 
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="view_${camelCaseToUnderscore(viewName)}"
+        default="view_data"
+        help="The name of the layout to create for the view" />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_mvvm_activity.png</thumb>
+    </thumbs>
+ 
+	<globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+ 
+</template>

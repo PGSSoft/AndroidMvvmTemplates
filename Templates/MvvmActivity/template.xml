@@ -1,0 +1,59 @@
+<template format="4"
+		revision="1"
+		name="MVVM Activity"
+		description="Creates MVVM activity">
+ 
+	<category value="Other"/>
+ 
+	<parameter id="activityName"
+		name="Activity Name"
+		type="string"
+		constraints="class|unique|nonempty"
+		default="New"
+		help="Name of the new activity, excluding the word &quot;Activity&quot;"/>
+
+	<parameter id="resourcePrefix"
+		name="Resource prefix"
+		type="string"
+		constraints="nonempty"
+		suggest="${activityName[0]?lower_case}${activityName[1..]}"
+		help="Prefix, which will be used for string resources" />
+		
+	<parameter id="idPrefix"
+		name="ID prefix"
+		type="string"
+		constraints="nonempty"
+		suggest='${activityName?replace("[a-z]","","r")?lower_case}'
+		help="Prefix, which will be used for ID resources" />
+		
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${activityToLayout(activityName)}"
+        default="activity_main"
+        help="The name of the layout to create for the activity" />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+	<parameter
+		id="addToolbar"
+		name="Add toolbar"
+		type="boolean"
+		default="false" />
+		
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_mvvm_activity.png</thumb>
+    </thumbs>
+ 
+	<globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+ 
+</template>

@@ -1,0 +1,131 @@
+<template format="4"
+		revision="1"
+		name="MVVM List Activity"
+		description="Creates MVVM activity with RecyclerView">
+ 
+	<category value="Other"/>
+ 
+	<dependency name="android-support-v7" revision="8" />
+ 
+	<parameter id="activityName"
+		name="Activity Name"
+		type="string"
+		constraints="class|unique|nonempty"
+		default="New"
+		help="Name of the new activity, excluding the word &quot;Activity&quot;"/>
+
+	<parameter id="resourcePrefix"
+		name="Resource prefix"
+		type="string"
+		constraints="nonempty"
+		suggest="${activityName[0]?lower_case}${activityName[1..]}"
+		help="Prefix, which will be used for string resources" />
+		
+	<parameter id="idPrefix"
+		name="ID prefix"
+		type="string"
+		constraints="nonempty"
+		suggest='${activityName?replace("[a-z]","","r")?lower_case}'
+		help="Prefix, which will be used for ID resources" />
+		
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${activityToLayout(activityName)}"
+        default="activity_main"
+        help="The name of the layout to create for the activity." />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+	<parameter id="entityName"
+		name="Entity Name"
+		type="string"
+		constraints="class|nonempty"
+		default="MyModel"
+		help="Class name of edited entity or model." />
+ 
+	<parameter id="entityPackage"
+		name="Entity package"
+		type="string"
+		constraints="package"
+		suggest="${packageName}.models"
+		help="Package of the entity or model class." />
+
+	<parameter id="generatedName"
+		name="Core name for generated classes"
+		type="string"
+		constraints="nonempty|class"
+		suggest="${entityName}"
+		help="Name for all generated classes: (name)Adapter, I(name)Handler etc. May be the same or a simpler version of model/entity name." />
+		
+	<parameter id="viewName"
+		name="Name of view displaying single item"
+		type="string"
+		constraints="class|nonempty"
+		suggest="${generatedName}"
+		help="Class name of view, which will display single item." />
+		
+    <parameter
+        id="viewLayout"
+        name="View layout name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="view_${camelCaseToUnderscore(viewName)}"
+        help="The name of the layout to create for the item view." />		
+		
+	<parameter
+		id="createBaseAdapters"
+		name="Create required base adapters for RecyclerView"
+		type="boolean"
+		default="true" />
+		
+	<parameter
+		id="includeHandler"
+		name="Include handler for feedback from item to viewmodel"
+		type="boolean"
+		default="false" />
+		
+	<parameter
+		id="includePopup"
+		name="Include popup menu in the item"
+		type="boolean"
+		default="false" />
+		
+    <parameter
+        id="popupKind"
+        name="Open popup by"
+        type="enum"
+        default="longpress"
+        help="When the popup menu opens" >
+        <option id="longpress">Long press</option>
+        <option id="morebutton">More button</option>
+    </parameter>		
+		
+	<parameter
+		id="addToolbar"
+		name="Add toolbar"
+		type="boolean"
+		default="false" />
+		
+	<parameter
+		id="addFab"
+		name="Add floating action button"
+		type="boolean"
+		default="false" />
+		
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_mvvm_activity.png</thumb>
+    </thumbs>
+ 
+	<globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+ 
+</template>
