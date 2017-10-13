@@ -83,11 +83,11 @@ The template requires some more work - you need to provide a way to load and sav
 
 ### MVVM View
 
-![mvvm-view-dialog.png](mvvm-view-dialog.png)
+![mvvm-view-dialog.png](Assets/mvvm-view-dialog.png)
 
 This template creates the following files:
 
-![mvvm-view-files.png](mvvm-view-files.png)
+![mvvm-view-files.png](Assets/mvvm-view-files.png)
 
 This template creates a MVVM view. It's similar to MVVM activity - inflates view using DataBindingUtil, creates layout for view etc., but creates a View instead of full activity. It is useful if you want to create a view, which will be dynamically created during run-time, such as ListView or RecyclerView item.
 
@@ -95,7 +95,7 @@ This template creates a MVVM view. It's similar to MVVM activity - inflates view
 
 After adding most templates Android Studio will mark some identifiers as invalid:
 
-![known-issue-errors.png](known-issue-errors.png)
+![known-issue-errors.png](Assets/known-issue-errors.png)
 
 This is due to one of the reasons:
 
