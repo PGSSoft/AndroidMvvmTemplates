@@ -101,6 +101,7 @@ This is due to one of the reasons:
 
 * Android Studio does not run parser, which generates java files for bindings after applying a template. This is the case, when you use MVVM Activity or MVVM View templates. To get rid of errors either open generated layout file, make a change and save it or simply rebuild the whole project.
 * Some templates are commented out to prevent scrambling order of members of generated classes. Also, you need to make some modifications to the code to make it work (this affects MVVM List activity and MVVM Entity editor activity).
+* All templates uses Android Data Binding Library. Did you remember to enable it?
 
 # Contributing
 
@@ -110,12 +111,12 @@ Bug reports and pull requests are welcome on GitHub at [https://github.com/PGSSo
 
 The project is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-## About
+# About
 
 The project is maintained by [software development agency](https://www.pgs-soft.com/) [PGS Software](https://www.pgs-soft.com/).
 See our other [open-source projects](https://github.com/PGSSoft) or [contact us](https://www.pgs-soft.com/contact-us/) to develop your product.
 
-## Follow us
+# Follow us
 
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/PGSSoft/AndroidMvvmTemplates)  
 [![Twitter Follow](https://img.shields.io/twitter/follow/pgssoftware.svg?style=social&label=Follow)](https://twitter.com/pgssoftware)
